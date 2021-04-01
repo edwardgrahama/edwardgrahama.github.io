@@ -487,7 +487,7 @@ function loadVideo() {
     function exitFullscreen(){
 
         screen.orientation.unlock();
-        document.getElementById("video_fluid_control_fullscreen").setAttribute("onclick", "screen.orientation.unlock()");
+       // document.getElementById("video_fluid_control_fullscreen").setAttribute("onclick", "screen.orientation.unlock()");
 
         
 

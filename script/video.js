@@ -482,6 +482,7 @@ function loadVideo() {
         exitFullscreen();
 
     }
+  }
 
     function exitFullscreen(){
 

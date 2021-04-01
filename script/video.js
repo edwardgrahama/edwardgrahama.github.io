@@ -477,21 +477,21 @@ function loadVideo() {
     if ("orientation" in screen) {
 
 
-        document.getElementById("video_fluid_control_fullscreen").setAttribute("onclick", "screen.orientation.lock('landscape-primary');exitFullscreen()");
+        document.getElementById("video_fluid_control_fullscreen").setAttribute("onclick", "screen.orientation.lock('landscape-primary');screen.orientation.unlock();");
   
         
 
     }
   }
 
-    function exitFullscreen(){
+  /*  function exitFullscreen(){
 
         screen.orientation.unlock();
        // document.getElementById("video_fluid_control_fullscreen").setAttribute("onclick", "screen.orientation.unlock()");
 
         
 
-    }
+    }*/
 
 
 

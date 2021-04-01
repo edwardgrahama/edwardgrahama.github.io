@@ -141,7 +141,7 @@ function loadVideo() {
 
         player();
 
-        fullscreen()
+        //fullscreen()
 
 
       btndiv.innerHTML="";
@@ -286,7 +286,7 @@ function loadVideo() {
 
        player();
 
-       fullscreen()
+       //fullscreen()
 
       btndiv.innerHTML="";
       //btndiv.innerHTML='<span class="likebtn-wrapper" site_id="6051c11a6fd08b7d1a2cab81" data-i18n_after_like="Liked" data-theme="custom" data-icon_l_c="#ffffff" data-icon_l_c_v="#080600" data-icon_d_c="#ffffff" data-icon_d_c_v="#060400" data-label_c="#faf7f7" data-counter_l_c="#fffdfd" data-bg_c="#ff0000" data-bg_c_v="#b90404" data-brdr_c="rgba(255,255,255,0)" data-ef_voting="buzz" data-white_label="true" data-rich_snippet="true" data-popup_disabled="true"></span>';  

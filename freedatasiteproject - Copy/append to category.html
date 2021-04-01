@@ -1,0 +1,7 @@
+var str = "This is the string where we will check if our word exists.";
+var str_pos = str.indexOf("word");
+if (str_pos > -1) {
+  document.getElementById("myId").innerHTML = "The specific word exists";
+} else {
+  document.getElementById("myId").innerHTML = "The specific word doesn't exist";
+}

@@ -66,6 +66,8 @@ function reset(){
 
 }
 
+var thumbcheck;
+
 function thumbnails(){
 
 
@@ -157,6 +159,9 @@ else {
   'GET',
 
 
+//2580737552232712 - download backup
+//730556817568300 - movies
+
         {
           "fields":"thumbnails,id","limit":+limit
 
@@ -171,14 +176,19 @@ else {
 
     for (var i = 0;  i < response.data.length; i++) {
 
-      var thumburl = response.data[i].thumbnails.data[5].uri;
-      var thumbID = response.data[i].id;
+      thumbcheck = response.data[i].thumbnails;
+      
 
         
       clearTimeout(time);
 
-      if (thumburl != null) {
+      if (thumbcheck == null || thumbcheck == undefined) {
 
+      }
+      else{
+
+      var thumburl = response.data[i].thumbnails.data[5].uri;
+      var thumbID = response.data[i].id;
 
       var img = new Image();
       

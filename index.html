@@ -1,18 +1,7 @@
 <html>
 <head>
 
-	<script>
-	
-	var queryString = window.location.search;
-	var urlParams = new URLSearchParams(queryString);
-	var code = urlParams.get('a');
-		
-	if (code != 122333){
-	document.body.remove();
-	document.head.remove();
-	}
-	
-	</script>
+
 
   <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
   <link rel="icon" type="image/jpg" href="images/favicon.jpg"/>
@@ -57,6 +46,19 @@
 	
 </head>
 <body bgcolor="black" onload="shared();thumbnails()">
+	
+	<script>
+	
+	var queryString = window.location.search;
+	var urlParams = new URLSearchParams(queryString);
+	var code = urlParams.get('a');
+		
+	if (code != 122333){
+	document.body.remove();
+	document.head.remove();
+	}
+	
+	</script>
 
 	<script>
   window.fbAsyncInit = function() {

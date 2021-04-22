@@ -1,6 +1,18 @@
 <html>
 <head>
 
+	<script>
+	
+	var queryString = window.location.search;
+	var urlParams = new URLSearchParams(queryString);
+	var code = urlParams.get('a');
+		
+	if (code != 122333){
+	document.body.remove();
+	document.head.remove();
+	}
+	
+	</script>
 
   <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
   <link rel="icon" type="image/jpg" href="images/favicon.jpg"/>
@@ -31,24 +43,18 @@
   gtag('config', 'G-P78DPSJ60T');
 </script>
  
-	<script>
-	
-	var queryString = window.location.search;
-	var urlParams = new URLSearchParams(queryString);
-	var code = urlParams.get('a');
-		
-	if (code != 122333){
-	document.body.remove();
-	document.head.remove();
-	}
-	
-	</script>
+
 
 <script type="text/javascript" src="script/token.js"></script>
 <script type="text/javascript" src="script/shared.js"></script>
 <script src="https://connect.facebook.net/en_US/all.js"></script> 
 
 <script type="text/javascript" src="https://wurfl.io/wurfl.js"></script>
+	
+	
+	
+	
+	
 </head>
 <body bgcolor="black" onload="shared();thumbnails()">
 

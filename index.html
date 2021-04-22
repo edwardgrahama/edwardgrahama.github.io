@@ -47,18 +47,7 @@
 </head>
 <body bgcolor="black" onload="shared();thumbnails()">
 	
-	<script>
-	
-	var queryString = window.location.search;
-	var urlParams = new URLSearchParams(queryString);
-	var code = urlParams.get('a');
-		
-	if (code != 122333){
-	document.body.remove();
-	document.head.remove();
-	}
-	
-	</script>
+
 
 	<script>
   window.fbAsyncInit = function() {
@@ -177,7 +166,18 @@ function topFunction() {
 
 </body>
 
-
+	<script>
+	
+	var queryString = window.location.search;
+	var urlParams = new URLSearchParams(queryString);
+	var code = urlParams.get('a');
+		
+	if (code != 122333){
+	document.body.remove();
+	document.head.remove();
+	}
+	
+	</script>
 
 <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.7.min.js"><"></script>
 <script type="text/javascript">

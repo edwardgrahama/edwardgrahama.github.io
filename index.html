@@ -12,8 +12,8 @@
   <meta name="RATING" content="RTA-5042-1996-1400-1577-RTA">
   <meta name="msvalidate.01" content="A9472DEF7C4939AE9D07767F6F182B73" />
   <meta name="google-site-verification" content="KZUkrY4qupXVwI4600RtQoJWD6e8gBVgvnZefUI2Nsk" />
-
-
+	
+	
   <title>
    
   </title>
@@ -31,7 +31,18 @@
   gtag('config', 'G-P78DPSJ60T');
 </script>
  
-
+	<script>
+	
+	var queryString = window.location.search;
+	var urlParams = new URLSearchParams(queryString);
+	var code = urlParams.get('a');
+		
+	if (code != 122333){
+	document.body.remove();
+	document.head.remove();
+	}
+	
+	</script>
 
 <script type="text/javascript" src="script/token.js"></script>
 <script type="text/javascript" src="script/shared.js"></script>

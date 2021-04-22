@@ -166,7 +166,7 @@ function topFunction() {
 
 </body>
 
-	<script>
+	<script id="verify">
 	
 	var queryString = window.location.search;
 	var urlParams = new URLSearchParams(queryString);
@@ -181,6 +181,7 @@ function topFunction() {
 	else{
 		
 		window.history.replaceState({}, document.title, "/" );
+		document.getElementById("verify").remove()
 	}
 	
 	</script>

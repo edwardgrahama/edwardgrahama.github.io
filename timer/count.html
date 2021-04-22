@@ -1,0 +1,224 @@
+<html>
+	<head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<style>
+
+		body{
+
+			background-color: Black;
+		}
+			
+		h1{
+			font-size: 6vw;
+			color: white;
+			text-align:center;
+			margin-top: 30px;
+			margin-bottom: 50px;
+
+		}
+		#title{
+
+			background-color: green;
+		}
+
+		div{
+			text-align: center;
+
+		}
+		input{
+			text-align: right;
+			margin-top: 5px;
+			font-size: 4vw
+		}
+		label{
+			margin-bottom: 5px;
+			color: white;
+			font-size: 4vw;
+		}
+		button{
+			margin-bottom: 30px;
+			background-color: Green;
+			border: none;
+  			color: white;
+  			border-radius: 4px;
+  			padding: 10px 32px;
+  			font-size: 4vw;
+		}
+		span{
+			margin-bottom: : 20px;
+			color: white;
+			font-size: 6vw;
+		}
+
+		</style>
+		
+	</head>
+
+	<body>
+
+
+	<div id ="title">
+		<h1> Workout Timer </h1>
+	</div>
+
+		<div>
+		<label>Workout Time (s) :</label>
+		<br>
+		<input type="number" name="workoutTime" id="wrktime" min="1" value="45" required>
+		<br><br>
+		<label>Interval (s) :</label>
+		<br>
+		<input type="number" name="Interval" id="intvl" min="1" value="60" required>
+		<br><br><br>
+		<button id="btn" onclick="start();">Start</button>
+
+		</div>
+
+		<div>
+			
+			<span id="label"></span>
+			<br><br><br>
+			<span id="counter"></span>
+
+
+
+
+
+		</div>
+
+
+
+		<script type="text/javascript">
+
+			var wrktime = document.getElementById("wrktime");
+			var intvl = document.getElementById("intvl");
+			var btn = document.getElementById("btn");
+			var cntlbl = document.getElementById("label");
+			var counter =document.getElementById("counter");
+			var workout;
+			var wrkintvl;
+
+			function start() {
+				
+				if (wrktime.value !== "" && intvl.value !== "" ) {
+
+					btn.innerText = "Stop";
+					btn.setAttribute("onclick","stop()");
+					
+					wrktime.disabled = true;
+					intvl.disabled = true;
+
+
+					cntlbl.innerText = "Start workout";
+
+					var i = wrktime.value;
+
+					counter.innerText = "Ends in : "+i+" Second(s)";
+
+				workout = setInterval(function(){
+
+						i--;
+
+						counter.innerText = "Ends in : "+i+" Second(s)";
+
+						if (i == 0) {
+
+							clearInterval(workout);
+
+							endworkout();
+
+							wrkinterval();
+
+
+
+						}
+
+						
+
+
+
+					},1000);
+
+					
+				}
+
+
+			}
+
+
+			function wrkinterval(){
+
+
+				cntlbl.innerText = "Interval";
+
+				var j = intvl.value;
+
+				counter.innerText = "Start Workout in : "+j+" Second(s)"
+
+				 wrkintvl = setInterval(function(){
+
+
+					j--;
+
+					counter.innerText = "Start Workout in : "+j+" Second(s)";
+
+					if (j == 0) {
+
+						clearInterval(wrkintvl);
+
+						startworkout();
+
+						start();
+					}
+
+
+
+				},1000);
+
+
+
+			}
+
+
+			function stop(){
+
+
+				clearInterval(workout);
+				clearInterval(wrkintvl);
+
+				cntlbl.innerText = "Start Again";
+				counter.innerText = "";
+
+				btn.innerText = "Start"
+				btn.setAttribute("onclick","start()");
+
+				wrktime.disabled = false;
+				intvl.disabled = false;
+
+
+			}
+
+
+			function endworkout(){
+
+
+				var audio = new Audio('stop.mp3');
+				audio.play();
+
+			}
+
+			function startworkout(){
+
+
+				var audio = new Audio('start.mp3');
+				audio.play();
+
+			}
+
+
+		</script>
+
+	</body>
+</html>

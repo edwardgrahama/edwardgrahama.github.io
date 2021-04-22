@@ -17,6 +17,7 @@
 			margin-top: 30px;
 			margin-bottom: 50px;
 
+
 		}
 		#title{
 
@@ -91,131 +92,7 @@
 
 
 		<script type="text/javascript">
-
-			var wrktime = document.getElementById("wrktime");
-			var intvl = document.getElementById("intvl");
-			var btn = document.getElementById("btn");
-			var cntlbl = document.getElementById("label");
-			var counter =document.getElementById("counter");
-			var workout;
-			var wrkintvl;
-
-			function start() {
-				
-				if (wrktime.value !== "" && intvl.value !== "" ) {
-
-					btn.innerText = "Stop";
-					btn.setAttribute("onclick","stop()");
-					
-					wrktime.disabled = true;
-					intvl.disabled = true;
-
-
-					cntlbl.innerText = "Start workout";
-
-					var i = wrktime.value;
-
-					counter.innerText = "Ends in : "+i+" Second(s)";
-
-				workout = setInterval(function(){
-
-						i--;
-
-						counter.innerText = "Ends in : "+i+" Second(s)";
-
-						if (i == 0) {
-
-							clearInterval(workout);
-
-							endworkout();
-
-							wrkinterval();
-
-
-
-						}
-
-						
-
-
-
-					},1000);
-
-					
-				}
-
-
-			}
-
-
-			function wrkinterval(){
-
-
-				cntlbl.innerText = "Interval";
-
-				var j = intvl.value;
-
-				counter.innerText = "Start Workout in : "+j+" Second(s)"
-
-				 wrkintvl = setInterval(function(){
-
-
-					j--;
-
-					counter.innerText = "Start Workout in : "+j+" Second(s)";
-
-					if (j == 0) {
-
-						clearInterval(wrkintvl);
-
-						startworkout();
-
-						start();
-					}
-
-
-
-				},1000);
-
-
-
-			}
-
-
-			function stop(){
-
-
-				clearInterval(workout);
-				clearInterval(wrkintvl);
-
-				cntlbl.innerText = "Start Again";
-				counter.innerText = "";
-
-				btn.innerText = "Start"
-				btn.setAttribute("onclick","start()");
-
-				wrktime.disabled = false;
-				intvl.disabled = false;
-
-
-			}
-
-
-			function endworkout(){
-
-
-				var audio = new Audio('stop.mp3');
-				audio.play();
-
-			}
-
-			function startworkout(){
-
-
-				var audio = new Audio('start.mp3');
-				audio.play();
-
-			}
+var _0x56d6=['intvl','http://edwardgrahama.github.io/timer/start.mp3','Start\x20Workout\x20in\x20:\x20','2PtgVut','1ECmGzK','value','disabled','Ends\x20in\x20:\x20','2dFvhPc','onclick','440181bKfBRe','24650RtskDd','1055007oRfFXS','setAttribute','41169NLDyKo','241954xACwQd','Stop','innerText','Start\x20workout','counter','\x20Second(s)','play','Start','getElementById','2048157FpASsp','Interval','btn','194673lLzZKT','start()','http://edwardgrahama.github.io/timer/stop.mp3'];var _0xd199c3=_0x4102;(function(_0x3c0d52,_0x4081da){var _0x5b374e=_0x4102;while(!![]){try{var _0x46be22=-parseInt(_0x5b374e(0x19b))*-parseInt(_0x5b374e(0x198))+-parseInt(_0x5b374e(0x19c))+-parseInt(_0x5b374e(0x19a))+parseInt(_0x5b374e(0x19e))*-parseInt(_0x5b374e(0x1b1))+parseInt(_0x5b374e(0x1ab))*-parseInt(_0x5b374e(0x194))+parseInt(_0x5b374e(0x19f))+parseInt(_0x5b374e(0x1a8));if(_0x46be22===_0x4081da)break;else _0x3c0d52['push'](_0x3c0d52['shift']());}catch(_0xedf025){_0x3c0d52['push'](_0x3c0d52['shift']());}}}(_0x56d6,0x8a7ac));function _0x4102(_0xf452f3,_0xbe6b38){_0xf452f3=_0xf452f3-0x194;var _0x56d69f=_0x56d6[_0xf452f3];return _0x56d69f;}var wrktime=document[_0xd199c3(0x1a7)]('wrktime'),intvl=document[_0xd199c3(0x1a7)](_0xd199c3(0x1ae)),btn=document['getElementById'](_0xd199c3(0x1aa)),cntlbl=document[_0xd199c3(0x1a7)]('label'),counter=document[_0xd199c3(0x1a7)](_0xd199c3(0x1a3)),workout,wrkintvl,stopaudio,startaudio;function start(){var _0x5670dc=_0xd199c3;stopaudio=new Audio(_0x5670dc(0x1ad)),startaudio=new Audio(_0x5670dc(0x1af));if(wrktime[_0x5670dc(0x195)]!==''&&intvl['value']!==''){btn[_0x5670dc(0x1a1)]=_0x5670dc(0x1a0),btn['setAttribute'](_0x5670dc(0x199),'stop()'),wrktime[_0x5670dc(0x196)]=!![],intvl[_0x5670dc(0x196)]=!![],cntlbl['innerText']=_0x5670dc(0x1a2);var _0x328b4d=wrktime[_0x5670dc(0x195)];counter[_0x5670dc(0x1a1)]=_0x5670dc(0x197)+_0x328b4d+_0x5670dc(0x1a4),workout=setInterval(function(){var _0x4e459a=_0x5670dc;_0x328b4d--,counter[_0x4e459a(0x1a1)]=_0x4e459a(0x197)+_0x328b4d+'\x20Second(s)',_0x328b4d==0x0&&(clearInterval(workout),endworkout(),wrkinterval());},0x3e8);}}function wrkinterval(){var _0x3f1aed=_0xd199c3;cntlbl[_0x3f1aed(0x1a1)]=_0x3f1aed(0x1a9);var _0x5bd243=intvl[_0x3f1aed(0x195)];counter[_0x3f1aed(0x1a1)]=_0x3f1aed(0x1b0)+_0x5bd243+'\x20Second(s)',wrkintvl=setInterval(function(){var _0xdcd4cb=_0x3f1aed;_0x5bd243--,counter[_0xdcd4cb(0x1a1)]='Start\x20Workout\x20in\x20:\x20'+_0x5bd243+_0xdcd4cb(0x1a4),_0x5bd243==0x0&&(clearInterval(wrkintvl),startworkout(),start());},0x3e8);}function stop(){var _0x427b75=_0xd199c3;clearInterval(workout),clearInterval(wrkintvl),cntlbl['innerText']='Start\x20Again',counter['innerText']='',btn[_0x427b75(0x1a1)]=_0x427b75(0x1a6),btn[_0x427b75(0x19d)](_0x427b75(0x199),_0x427b75(0x1ac)),wrktime[_0x427b75(0x196)]=![],intvl[_0x427b75(0x196)]=![];}function endworkout(){var _0x386278=_0xd199c3;stopaudio[_0x386278(0x1a5)]();}function startworkout(){var _0x27753c=_0xd199c3;startaudio[_0x27753c(0x1a5)]();}
 
 
 		</script>

@@ -76,12 +76,12 @@ function generateTableHead() {  //generate table head
    let row = thead.insertRow();
 
    th = document.createElement("th");
-   text = document.createTextNode("Lot #");
+   text = document.createTextNode("Lot # |");
    th.appendChild(text);
    row.appendChild(th);
 
    th = document.createElement("th");
-   text = document.createTextNode("Actual Bid");
+   text = document.createTextNode("Actual Bid |");
    th.appendChild(text);
    row.appendChild(th);
 
@@ -187,14 +187,3 @@ function reset(){
 generateTableHead()
 
 
-
-
-
-
-
-/**
- let scriptEle = document.createElement("script");
- scriptEle.setAttribute("src", "https://edwardgrahama.github.io/script/fetch-bid-values.js");
- document.body.appendChild(scriptEle);
- 
- */

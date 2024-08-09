@@ -14,6 +14,8 @@ DIV.appendChild(TABLE)
 
 //lotID = 86300304
 //auctionID = 264335
+
+var dat
 async function getData(lotid) {
 
    await fetch("https://jjkane.proxibid.com/asp/xml/LotTimeRemAllXML.asp?aid=0", {
@@ -23,7 +25,7 @@ async function getData(lotid) {
    })
       .then(response => response.text())
       .then(str => new window.DOMParser().parseFromString(str, "text/html"))
-      .then(data => { document.body.firstChild.innerHTML = data.body.firstChild.innerHTML; tableDat(data) });
+      .then(data => { document.body.firstChild.innerHTML = data.body.firstChild.innerHTML; dat =data ;tableDat(data) });
 
 }
 
@@ -53,7 +55,7 @@ function generateTableHead() {  //generate table head
 }
 
 function tableDat() {
-   itemData = document.getElementById('data').firstChild
+   itemData = dat.body.firstChild.firstChild
    lot = itemData.children[6].innerText
    price = itemData.children[4].innerText
    timeRem = itemData.children[0].innerText
@@ -132,9 +134,13 @@ generateTableHead()
 
 
 
+
+
+
+
 /**
- * let scriptEle = document.createElement("script");
- * scriptEle.setAttribute("src", "https://www.mywebsite.com/test.js");
- * document.body.appendChild(scriptEle);
- * 
+ let scriptEle = document.createElement("script");
+ scriptEle.setAttribute("src", "https://edwardgrahama.github.io/script/fetch-bid-values.js");
+ document.body.appendChild(scriptEle);
+ 
  */

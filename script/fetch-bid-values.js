@@ -1,9 +1,20 @@
 
-document.body.innerHTML = `<div id='data'></div><form id="urlForm">
+document.body.innerHTML = `
+<div id='data'></div>
+<div style="display:flex;flex-direction:row;gap:20px;height:30vh;margin-top:20px">
+
+<form id="urlForm">
 <label for="urls">URLs (separated by commas or new lines):</label><br>
 <textarea id="urls" rows="10" cols="50" placeholder="Enter URLs here..."></textarea><br><br>
-<button type="button" onclick="extractLid()">Get Bid Values</button><span id='progress'></span>
-</form><div id='main'></div><script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>`
+<button type="button" onclick="extractLid()">Get Bid Values</button>
+<span id='progress'></span>
+</form>
+<div style="height:100%">
+<label>Error Log</label>
+<span style="color:red;" id="error-log" > </span>
+</div>
+</div>
+<div id='main'></div><script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>`
 
 DIV = document.getElementById('main')
 const TABLE = document.createElement('table')
@@ -17,6 +28,7 @@ DIV.appendChild(TABLE)
 
 var dat
 var miss=0;
+var log = document.getElementById('error-log')
 async function getData(lotid) {
 
    await fetch("https://jjkane.proxibid.com/asp/xml/LotTimeRemAllXML.asp?aid=0", {
@@ -26,7 +38,7 @@ async function getData(lotid) {
    })
       .then(response => response.text())
       .then(str => new window.DOMParser().parseFromString(str, "text/html"))
-      .then(data => { document.body.firstChild.innerHTML = data.body.firstChild.innerHTML; 
+      .then(data => { document.getElementById('data').innerHTML = data.body.firstChild.innerHTML; 
          dat =data ;
          tableDat(data);
 
@@ -34,6 +46,10 @@ async function getData(lotid) {
             console.log("Couldn\'t retrieve data. Invalid or Broken URL")
             console.log("Check URL associated with item no "+parseInt(cnt+1))
             console.log("Jumping to next item")
+            
+            log.innerHTML += `<p>Couldn\'t retrieve data for item no `+parseInt(cnt+1)+`. Invalid or Broken URL<br>
+            Check URL associated with item no `+parseInt(cnt+1)+` <a target='_blank' href=`+urlArr[cnt]+`>HERE..</a><br>
+            Jumping to next item<p>`
             miss++
             cnt++
          }
@@ -138,10 +154,12 @@ function ConvertSectoDay(n) {
 var cnt = 0;
 
 var arr;
+var urlArr
 function extractLid() {
    reset()
    const input = document.getElementById('urls').value;
    const urlArray = input.split(/\s+|,/).filter(url => url.trim() !== '');
+   urlArr = urlArray
    const extractedArray = urlArray.map(url => {
       const match = url.match(/[\?&]lid=([^&]*)/);
       return match ? match[1] : 'No ?lid= found';
@@ -163,6 +181,7 @@ function reset(){
    //document.getElementById("data-output").firstChild.innerHTML = ''
    cnt = 0
    miss=0;
+   log.innerHTML = ''
 }
 
 generateTableHead()

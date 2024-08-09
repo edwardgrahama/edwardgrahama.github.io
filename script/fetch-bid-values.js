@@ -162,6 +162,7 @@ function reset(){
    tbody.innerHTML = ''
    //document.getElementById("data-output").firstChild.innerHTML = ''
    cnt = 0
+   miss=0;
 }
 
 generateTableHead()

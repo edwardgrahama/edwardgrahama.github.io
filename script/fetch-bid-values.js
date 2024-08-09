@@ -132,6 +132,7 @@ function tableDat(data) {
    }
    else {
       text = document.createTextNode(' Invalid URL')
+      row.style.color = 'red'
    }
    cell.appendChild(text)
    cell.innerHTML +='<br>'
@@ -185,5 +186,7 @@ function reset(){
 }
 
 generateTableHead()
+
+
 
 

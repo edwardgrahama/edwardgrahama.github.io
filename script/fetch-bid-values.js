@@ -14,7 +14,18 @@ document.body.innerHTML = `
 <span style="color:red;" id="error-log" > </span>
 </div>
 </div>
-<div id='main'></div><script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>`
+<div id='main'></div>
+<style>
+td {
+   outline: solid 1px #b6b6b6;
+   padding: 5px
+}
+th {
+   outline: solid 1px #b6b6b6
+   padding: 5px
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>`
 
 DIV = document.getElementById('main')
 const TABLE = document.createElement('table')
@@ -77,17 +88,17 @@ function generateTableHead() {  //generate table head
    let row = thead.insertRow();
 
    th = document.createElement("th");
-   text = document.createTextNode("Lot # |");
+   text = document.createTextNode(" Lot # ");
    th.appendChild(text);
    row.appendChild(th);
 
    th = document.createElement("th");
-   text = document.createTextNode("Actual Bid |");
+   text = document.createTextNode(" Actual Bid ");
    th.appendChild(text);
    row.appendChild(th);
 
    th = document.createElement("th");
-   text = document.createTextNode("Time Remaining");
+   text = document.createTextNode(" Time Remaining ");
    th.appendChild(text);
    row.appendChild(th);
 
@@ -187,7 +198,6 @@ function reset(){
 }
 
 generateTableHead()
-
 
 
 

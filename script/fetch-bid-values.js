@@ -60,6 +60,7 @@ async function getData(lotid) {
          }
          if(cnt == arr.length){
             document.getElementById('progress').innerHTML = "Completed. "+ parseInt(cnt-miss)+" out of "+cnt+" data retrieved"
+            tbody.lastChild.lastChild.remove()
          }
          else{
             getData(arr[cnt])

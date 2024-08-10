@@ -21,7 +21,7 @@ td {
    padding: 5px
 }
 th {
-   outline: solid 1px #b6b6b6
+   outline: solid 1px #b6b6b6;
    padding: 5px
 }
 </style>

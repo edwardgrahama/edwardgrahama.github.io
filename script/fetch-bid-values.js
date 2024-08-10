@@ -7,14 +7,15 @@ document.body.innerHTML = `
 <label for="urls">URLs (separated by commas or new lines):</label><br>
 <textarea id="urls" rows="10" cols="50" placeholder="Enter URLs here..."></textarea><br><br>
 <button type="button" onclick="extractLid()">Get Bid Values</button>
-<span id='progress'></span>
+<span id='progress'></span><br>
+<button type="button" id="copyBtn" onclick="copyValues(this)" hidden>Copy Data</button>
 </form>
 <div style="height:100%">
 <label>Error Log</label>
 <span style="color:red;" id="error-log" > </span>
 </div>
 </div>
-<div id='main'></div>
+<div id='main'></div>   
 <style>
 td {
    outline: solid 1px #b6b6b6;
@@ -23,6 +24,14 @@ td {
 th {
    outline: solid 1px #b6b6b6;
    padding: 5px
+}
+button {
+   margin: 5px;
+   cursor: pointer;
+}
+lot {
+   display:flex;
+   gap: 5px
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>`
@@ -72,6 +81,8 @@ async function getData(lotid) {
          if(cnt == arr.length){
             document.getElementById('progress').innerHTML = "Completed. "+ parseInt(cnt-miss)+" out of "+cnt+" data retrieved"
             tbody.lastChild.lastChild.remove()
+            let btn = document.getElementById('copyBtn')
+            btn.hidden = false
          }
          else{
             getData(arr[cnt])
@@ -187,7 +198,11 @@ function extractLid() {
 
 }
 
-
+function copyValues(el){
+   let vals = TABLE.outerHTML
+   navigator.clipboard.writeText(vals)
+   el.innerText = "Copied"
+}
 
 function reset(){
    tbody.innerHTML = ''
@@ -195,9 +210,11 @@ function reset(){
    cnt = 0
    miss=0;
    log.innerHTML = ''
+   let btn = document.getElementById('copyBtn')
+   btn.hidden = true
+   btn.innerText = 'Copy Data'
 }
 
 generateTableHead()
-
 
 

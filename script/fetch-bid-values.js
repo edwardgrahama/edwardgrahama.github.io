@@ -8,14 +8,17 @@ document.body.innerHTML = `
 <textarea id="urls" rows="10" cols="50" placeholder="Enter URLs here..."></textarea><br><br>
 <button type="button" onclick="extractLid()">Get Bid Values</button>
 <span id='progress'></span><br>
-<button type="button" id="copyBtn" onclick="copyValues(this)" hidden>Copy Data</button>
+<button type="button" id="copyBtn" onclick="copyValues(this)" hidden>Copy All</button>
+<button type="button" id="bidVal" value='Copy Bid' onclick="copyOneCol('bidVal','remTime')" hidden>Copy Bids</button>
+<button type="button" id="remTime" value='Copy Time' onclick="copyOneCol('remTime','bidVal')" hidden>Copy Time</button>
 </form>
 <div style="height:100%">
 <label>Error Log</label>
 <span style="color:red;" id="error-log" > </span>
 </div>
 </div>
-<div id='main'></div>   
+<div id='main'></div>
+<table id='oneCol' hidden></table>   
 <style>
 td {
    outline: solid 1px #b6b6b6;
@@ -35,6 +38,9 @@ lot {
 }
 textarea {
    resize:none;
+}
+.error{
+   color:red;
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>`
@@ -85,7 +91,11 @@ async function getData(lotid) {
             document.getElementById('progress').innerHTML = "Completed. "+ parseInt(cnt-miss)+" out of "+cnt+" data retrieved"
             tbody.lastChild.lastChild.remove()
             let btn = document.getElementById('copyBtn')
+            let btn2 = document.getElementById('bidVal')
+            let btn3 = document.getElementById('remTime')
             btn.hidden = false
+            btn2.hidden = false
+            btn3.hidden = false
          }
          else{
             getData(arr[cnt])
@@ -149,6 +159,7 @@ function tableDat(data) {
       text = document.createTextNode(cnt+1)
    }
    cell.appendChild(text)
+   cell.classList.add('bidVal')
    cell.innerHTML +='<br>'
 
    cell = row.insertCell()
@@ -158,9 +169,10 @@ function tableDat(data) {
    }
    else {
       text = document.createTextNode(' Invalid URL')
-      row.style.color = 'red'
+      row.classList.add('error')
    }
    cell.appendChild(text)
+   cell.classList.add('remTime')
    cell.innerHTML +='<br>'
    row.innerHTML +='<br>'
 
@@ -173,9 +185,19 @@ function ConvertSectoDay(n) {
    n = n % (24 * 3600);
    var hour = parseInt(n / 3600);
 
+   let d = 'days'
+   let h = 'hours'
+
+   if(day == 1){
+      d = 'day'
+   }
+
+   if(hour == 1){
+      h = 'hour'
+   }
 
    return (
-      day + " " + "days " + hour + " " + "hours "
+      day + " " +d+ " " + hour + " " + h
    );
 }
 var cnt = 0;
@@ -207,6 +229,36 @@ function copyValues(el){
    el.innerText = "Copied"
 }
 
+function copyOneCol(cls,sibl){
+   let t = document.getElementById('oneCol')
+   t.innerHTML = ''
+   let tb = document.createElement('tbody')
+   t.appendChild(tb)
+
+   let el = document.querySelectorAll('.'+cls+'')
+
+   for(i=0;i<el.length;i++){
+      let row = tb.insertRow()
+      let text;
+      let cell;
+
+      cell = row.insertCell()
+      if (!tbody.children[i].classList.contains('error')) {
+         cell.innerHTML = el[i].innerHTML
+      }
+      else {
+         cell.innerHTML = ' <br>'
+      }
+
+
+   }
+
+   navigator.clipboard.writeText(t.outerHTML)
+   document.getElementById(cls).innerText = 'Copied'
+   document.getElementById(sibl).innerText = document.getElementById(sibl).value
+
+}
+
 function reset(){
    tbody.innerHTML = ''
    //document.getElementById("data-output").firstChild.innerHTML = ''
@@ -215,7 +267,14 @@ function reset(){
    log.innerHTML = ''
    let btn = document.getElementById('copyBtn')
    btn.hidden = true
-   btn.innerText = 'Copy Data'
+   btn.innerText = 'Copy All'
+
+   let btn2 = document.getElementById('bidVal')
+   let btn3 = document.getElementById('remTime')
+   btn2.hidden = true
+   btn3.hidden = true
+   btn2.innerText = 'Copy Bid'
+   btn3.innerText = 'Copy Time'
 }
 
 generateTableHead()

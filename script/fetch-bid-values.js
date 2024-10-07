@@ -182,11 +182,11 @@ function tableDat(data) {
 function ConvertSectoDay(n) {
    var day = parseInt(n / (24 * 3600));
 
-   n = n % (24 * 3600);
-   var hour = parseInt(n / 3600);
+   x = n % (24 * 3600);
+   var hour = parseInt(x / 3600);
    
-   n %= 3600;
-   var minutes = n / 3600;
+   x = n % 3600;
+   var minutes = x / 60;
    
    let d = 'days'
    let h = 'hours'
@@ -200,7 +200,7 @@ function ConvertSectoDay(n) {
       h = 'hour'
    }
    
-   if(minutes == 1){
+   if(minutes.toFixed() == 1){
       m = 'minute'
    }
    

@@ -206,7 +206,7 @@ function ConvertSectoDay(n) {
    
 
    return (
-      day + " " +d+ " " + hour + " " + h " " + minutes + " " + m
+      day + " " +d+ " " + hour + " " + h + " " + minutes + " " + m
    )
 }
 var cnt = 0;

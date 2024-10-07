@@ -185,8 +185,8 @@ function ConvertSectoDay(n) {
    n = n % (24 * 3600);
    var hour = parseInt(n / 3600);
    
-   n %= 3600; 
-   var minutes = n / 60; 
+   n = (n % 3600); 
+   var minutes = parseInt(n / 3600);
    
    let d = 'days'
    let h = 'hours'
@@ -199,10 +199,15 @@ function ConvertSectoDay(n) {
    if(hour == 1){
       h = 'hour'
    }
+   
+   if(minutes == 1){
+      m = 'minute'
+   }
+   
 
    return (
       day + " " +d+ " " + hour + " " + h " " + minutes + " " + m
-   );
+   )
 }
 var cnt = 0;
 

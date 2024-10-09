@@ -179,6 +179,7 @@ function tableDat(data) {
   
 }
 
+
 function ConvertSectoDay(n) {
    var day = parseInt(n / (24 * 3600));
 
@@ -209,6 +210,7 @@ function ConvertSectoDay(n) {
       day + " " +d+ " " + hour + " " + h + " " + minutes.toFixed() + " " + m
    )
 }
+
 var cnt = 0;
 
 var arr;
@@ -226,8 +228,12 @@ function extractLid() {
    arr = extractedArray
 
    //for (i = 0; i < arr.length; i++) {
-
+   if(arr.length > 0){
       getData(arr[cnt])
+   }
+   else{
+      document.getElementById('urls').focus()
+   }   
   // }
 
 }
@@ -287,5 +293,3 @@ function reset(){
 }
 
 generateTableHead()
-
-
